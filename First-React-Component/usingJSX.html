@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React component using JSX</title>
+    <script src="https://unpkg.com/react@16.0.0-rc.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0-rc.2/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+<body>
+    <div id="react-component"></div>
+    
+    <script type="text/babel">
+    
+    //babel: for converting JSX into vanilla javascript
+    //JSX: returning html from javascript code
+    
+    class Flakes extends React.Component {
+        render () {
+            return(
+                <div>
+                    <h2>Snow Flakes</h2>
+                    <img src="flakes.jpg" alt="Snow flake" />
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<Flakes />, document.getElementById("react-component"));
+    </script>
+</body>
+</html>

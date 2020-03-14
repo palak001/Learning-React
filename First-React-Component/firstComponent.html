@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First React Component</title>
+    <script src="https://unpkg.com/react@16.0.0-rc.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0-rc.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react-dom-factories@1.0.0/index.js"></script>
+</head>
+<body>
+    <div id="react-app"></div>
+    <script type="text/javascript">
+        class flake extends React.Component {
+            //render method for returning code to be displayed in the DOM
+            //ReactDOMFactories: for creating  element for the page
+            //takes two value, attributes being first and thing inside the tag.
+            render () {
+                const h2 = ReactDOMFactories.h2(null, "Snow Flake");
+                const img = ReactDOMFactories.img({
+                    src: "flakes.jpg",
+                    alt: "Snow Flake"
+                });
+
+                //Here we cannot return multiple components, we need to insert those elements in one DOM element
+                return ReactDOMFactories.div(null,h2, img); 
+            }
+        } 
+
+        //for rendering element in the DOM
+        ReactDOM.render(React.createElement(flake), document.getElementById("react-app"));
+    </script>
+</body>
+</html>
