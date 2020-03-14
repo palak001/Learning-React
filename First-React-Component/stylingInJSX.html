@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Styling in JSX</title>
+    <script src="https://unpkg.com/react@16.0.0-rc.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0-rc.2/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+    <style>
+        #react-component{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .card{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(248, 120, 220);
+        }
+        .cardImage{
+            width: 500px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="react-component"></div>
+
+    <script type="text/babel">
+        class Fractal extends React.Component {
+            render () {
+                const fontFamily = ['Arial', 'Helvetica', 'sans-serif', 'ubuntu', 'fantasy'][Math.floor(Math.random()*8)];
+                const fontSize = Math.floor(Math.random() * 80) + 20;
+                const backgroundColor = ['teal', 'cadetblue', 'charcoal', 'yellow', 'royal', 'maroon', 'azure', 'prussian'][Math.floor(Math.random()*8)];
+                const textStyle = {fontSize, fontFamily};
+                return (
+                    <div className="card" style={{backgroundColor}}>
+                        <br />
+                        Refresh the page to see random font size, font face and backgroundColor :)
+                        <h2 style={textStyle}>Snow Flake</h2>
+                        <img className="cardImage" src="flakes.jpg" alt="Snow flake" />
+                        <p style={{fontSize, fontFamily}}>
+                            ❄️ SnowFlakes ❄️
+                        </p>
+                        <p>
+                        {"These Braces " + "are " + "for " + "evaluating " + "js " + "code in jsx"}
+                        </p>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Fractal />, document.getElementById("react-component"));
+    </script>
+</body>
+</html>
