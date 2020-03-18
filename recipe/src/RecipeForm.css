@@ -1,0 +1,30 @@
+.recipe-form-container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipe-form{
+    padding: 10px;
+    margin-top: 10px;
+    display:flex;
+    flex-direction: column;
+    background-color: #e3e3e9;
+    border: 1px solid #969597;
+}
+.recipe-form-line{
+    display: flex;
+    flex-direction: column;
+}
+
+.close-button, .buttons{
+    border:none;
+    background-color: transparent;
+    font-size: 0.9em;
+    align-self: flex-end;
+    color: white;
+    background-color:rgb(48, 64, 83);
+    padding: 5px;
+    border-radius: 10%;
+}
+
