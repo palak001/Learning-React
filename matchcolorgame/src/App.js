@@ -99,6 +99,7 @@ class App extends React.Component {
         cardState: CardState.HIDING
       }
     ));
+    cards = shuffle(cards);
     this.setState({cards});
   }
 
