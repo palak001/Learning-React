@@ -3,6 +3,7 @@ import './App.css';
 import Card from './card';
 import shuffle from 'shuffle-array';
 import Navbar from './navbar';
+import RevealButton from './revealButton';
 
 const CardState = {
   HIDING: 0,
@@ -42,10 +43,11 @@ class App extends React.Component {
       {id: 23, cardState: CardState.HIDING, backgroundColor: 'black'},
     ];
     cards = shuffle(cards);
-    this.state = {cards, noClick: false};
+    this.state = {cards, noClick: false, leftChances: 2};
 
     this.resetGame = this.resetGame.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.reveal = this.reveal.bind(this);
   }
 
 
@@ -99,7 +101,25 @@ class App extends React.Component {
         cardState: CardState.HIDING
       }
     ));
+    cards = shuffle(cards);
     this.setState({cards});
+  }
+
+  reveal() {
+    if(this.state.leftChances === 0)
+      return;
+    let prevCards = this.state.cards.map((c, ind) => c);
+    let leftChances = this.state.leftChances - 1;
+    let newCards = this.state.cards.map((c, ind) => (
+      {
+        ...c,
+        cardState: CardState.SHOWING
+      }
+    ));
+    this.setState({cards:newCards});
+    setTimeout(() => {
+      this.setState({cards: prevCards, leftChances});
+    }, 300);
   }
 
   render () {
@@ -114,6 +134,7 @@ class App extends React.Component {
       <div className="App">
         <Navbar onClick={() => {this.resetGame()}}/>
         {cards}
+        <RevealButton leftChances={this.state.leftChances} onClick={() => {this.reveal()}}/>
       </div>
     )
   }
